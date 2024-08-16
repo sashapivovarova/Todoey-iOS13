@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Todoey-->
         <scene sceneID="NBy-LV-Dek">
             <objects>
                 <tableViewController id="w8d-Fa-WTu" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                             <outlet property="delegate" destination="w8d-Fa-WTu" id="6aU-fT-TPw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Khc-cy-PFA"/>
+                    <navigationItem key="navigationItem" title="Todoey" id="Khc-cy-PFA"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ul-2h-9o7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -45,6 +45,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aoW-hY-QKe">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" systemColor="systemBlueColor"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -59,6 +63,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
