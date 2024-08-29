@@ -28,6 +28,10 @@ class TodoListViewController: UITableViewController {
         let newItem3 = Item()
         newItem3.title = "Harajuku"
         itemArray.append(newItem3)
+        
+        if let items = defaults.array(forKey: "TodoListArray") as? [Item] {
+            itemArray = items
+        }
     }
     
     //MARK: - Tableview Datasource Methods
