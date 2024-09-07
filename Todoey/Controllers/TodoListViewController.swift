@@ -39,7 +39,7 @@ class TodoListViewController: UITableViewController {
         return cell
     }
     
-    //MARK: - Tableview Delegate Methods
+    //MARK: - Tableview Delegate Method
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         context.delete(itemArray[indexPath.row])
@@ -99,8 +99,25 @@ class TodoListViewController: UITableViewController {
     }
 }
 
+//MARK: - SearchBar Method
 extension TodoListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        <#code#>
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        
+        request.predicate = predicate
+        
+        let sortDescriptor = NSSortDescriptor(key: "title", ascending: true)
+        
+        request.sortDescriptors = [sortDescriptor]
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching data from context \(error)")
+        }
+        
+        tableView.reloadData()
     }
 }
