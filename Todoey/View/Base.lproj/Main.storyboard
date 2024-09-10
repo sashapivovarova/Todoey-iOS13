@@ -8,6 +8,45 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Category View Controller-->
+        <scene sceneID="L7R-mw-2g9">
+            <objects>
+                <tableViewController id="r3k-7i-bQU" customClass="CategoryViewController" customModule="Todoey" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="HVi-3a-YMu">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="msh-Nx-JSU">
+                                <rect key="frame" x="0.0" y="50" width="393" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="msh-Nx-JSU" id="uC9-dN-S7g">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="r3k-7i-bQU" id="CTf-Af-0De"/>
+                            <outlet property="delegate" destination="r3k-7i-bQU" id="d9m-qE-udL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1wR-Cb-aCV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Hy1-Jz-ryL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addButtonPressed:" destination="r3k-7i-bQU" id="gUl-cx-ZUZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="w8d-Fa-WTu" kind="show" identifier="goToItems" id="YJY-wJ-rrC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0rl-26-hwO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1616" y="4"/>
+        </scene>
         <!--Todoey-->
         <scene sceneID="NBy-LV-Dek">
             <objects>
@@ -51,7 +90,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ul-2h-9o7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1695.4198473282443" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="2489" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="m2e-Qu-UMA">
@@ -80,7 +119,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="w8d-Fa-WTu" kind="relationship" relationship="rootViewController" id="ee4-bz-heQ"/>
+                        <segue destination="r3k-7i-bQU" kind="relationship" relationship="rootViewController" id="LRw-j1-JEB"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NsY-AN-baH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
