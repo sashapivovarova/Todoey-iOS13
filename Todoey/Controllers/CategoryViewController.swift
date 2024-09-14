@@ -14,9 +14,10 @@ class CategoryViewController: UITableViewController {
     var categories = [Category]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadCategories()
     }
     
     //MARK: - TableView Datasource Methods
@@ -33,7 +34,20 @@ class CategoryViewController: UITableViewController {
         
         return cell
     }
+    
+    //MARK: - TableView Delegate Methods
+    
+    
     //MARK: - Data Manipulation Methods
+    func saveCategorise() {
+        do {
+            try context.save()
+        } catch {
+            print("Error saving category \(error)")
+        }
+        
+        tableView.reloadData()
+    }
     
     //MARK: - Add New Categories
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
@@ -47,7 +61,7 @@ class CategoryViewController: UITableViewController {
             newCategory.name = textField.text!
             
             self.categories.append(newCategory)
-            
+            self.saveCategorise()
         }
         
         alert.addAction(action)
@@ -58,6 +72,4 @@ class CategoryViewController: UITableViewController {
         
         present(alert, animated: true, completion: nil)
     }
-    
-    //MARK: - TableView Delegate Methods
 }
