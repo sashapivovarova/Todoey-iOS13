@@ -82,28 +82,28 @@ class CategoryViewController: SwipeTableViewController {
             }
         }
     }
-
-
-//MARK: - Add New Categories
-@IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
     
-    var textField = UITextField()
     
-    let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
-    
-    let action = UIAlertAction(title: "Add", style: .default) { (action) in
-        let newCategory = Category()
-        newCategory.name = textField.text!
+    //MARK: - Add New Categories
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
         
-        self.save(category: newCategory)
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add New Category", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            let newCategory = Category()
+            newCategory.name = textField.text!
+            
+            self.save(category: newCategory)
+        }
+        
+        alert.addAction(action)
+        alert.addTextField { (field) in
+            textField = field
+            textField.placeholder = "Add New Category"
+        }
+        
+        present(alert, animated: true, completion: nil)
     }
-    
-    alert.addAction(action)
-    alert.addTextField { (field) in
-        textField = field
-        textField.placeholder = "Add New Category"
-    }
-    
-    present(alert, animated: true, completion: nil)
-}
 }
