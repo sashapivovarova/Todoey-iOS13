@@ -50,8 +50,7 @@ class TodoListViewController: SwipeTableViewController {
         if let item = todoItems?[indexPath.row] {
             do {
                 try realm.write {
-                    realm.delete(item)
-                    //                    item.done = !item.done
+                    item.done = !item.done
                 }
             } catch {
                 print("Error saving done status, \(error)")
@@ -104,6 +103,18 @@ class TodoListViewController: SwipeTableViewController {
         todoItems = selectedCategory?.items.sorted(byKeyPath: "title", ascending: true)
         
         tableView.reloadData()
+    }
+    
+    override func updateModel(at indexPath: IndexPath) {
+        if let item = todoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    realm.delete(item)
+                }
+            } catch {
+                print("Error deleting Item, \(error)")
+            }
+        }
     }
 }
 
