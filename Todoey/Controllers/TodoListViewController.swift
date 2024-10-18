@@ -11,8 +11,8 @@ import RealmSwift
 
 class TodoListViewController: SwipeTableViewController {
     
+    @IBOutlet weak var searchBar: UISearchBar!
     var todoItems: Results<Item>?
-    
     let realm = try! Realm()
     
     var selectedCategory: Category? {
@@ -32,6 +32,7 @@ class TodoListViewController: SwipeTableViewController {
         title = selectedCategory?.name
         guard let navBar = navigationController?.navigationBar else {fatalError("Navigation Controller does not exist")}
         navBar.scrollEdgeAppearance?.backgroundColor = UIColor.yellow
+        searchBar.barTintColor = UIColor.yellow
     }
     
     
