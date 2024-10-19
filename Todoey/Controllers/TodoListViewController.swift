@@ -27,14 +27,14 @@ class TodoListViewController: SwipeTableViewController {
         tableView.rowHeight = 80.0
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         title = selectedCategory?.name
         guard let navBar = navigationController?.navigationBar else {fatalError("Navigation Controller does not exist")}
         navBar.scrollEdgeAppearance?.backgroundColor = UIColor.yellow
+        navBar.tintColor = UIColor.black
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         searchBar.barTintColor = UIColor.yellow
     }
-    
     
     //MARK: - Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

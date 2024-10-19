@@ -18,9 +18,16 @@ class CategoryViewController: SwipeTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
-        
         tableView.rowHeight = 80.0
         tableView.separatorStyle = .none
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let navBar = navigationController?.navigationBar else {fatalError("Navigation Controller does not exist")}
+        navBar.scrollEdgeAppearance?.backgroundColor = UIColor.yellow
+        navBar.tintColor = UIColor.black
+        navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
     }
     
     //MARK: - TableView Datasource Methods
@@ -34,7 +41,7 @@ class CategoryViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No Categories Added Yet"
-        cell.backgroundColor = UIColor.yellow
+        
         return cell
     }
     
@@ -83,7 +90,6 @@ class CategoryViewController: SwipeTableViewController {
             }
         }
     }
-    
     
     //MARK: - Add New Categories
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
